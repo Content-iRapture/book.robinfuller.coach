@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finish Well | Succession Planning for Ministry Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#6DC2D1;
+  --cyan-deep:#3E93A4;
+  --teal-ink:#12363E;
+  --crimson:#F51234;
+  --paper:#F7FAFA;
+  --paper-warm:#FFFFFF;
+  --ink:#1B1E1E;
+  --muted:#5C6A6C;
+  --rule:#D5E2E4;
+  --serif:'EB Garamond',Georgia,serif;
+  --display:'Playfair Display',Georgia,serif;
+  --sans:'Montserrat','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:19px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.wide{max-width:920px;margin:0 auto;padding:0 24px}
+
+/* ---------- mockup chrome (not part of the page) ---------- */
+#chrome{
+  position:sticky;top:0;z-index:60;background:#12363E;color:#EAF4F5;
+  font-family:var(--sans);font-size:12px;letter-spacing:.06em;
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  padding:10px 18px;border-bottom:2px solid var(--crimson);
+}
+#chrome .tag{text-transform:uppercase;font-weight:600;opacity:.75}
+#chrome button{
+  font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  background:transparent;color:#EAF4F5;border:1px solid rgba(234,244,245,.45);
+  padding:6px 12px;border-radius:2px;cursor:pointer;font-weight:500;
+}
+#chrome button[aria-pressed="true"]{background:#EAF4F5;color:#12363E;border-color:#EAF4F5}
+#chrome .note{opacity:.6;text-transform:none;letter-spacing:.02em;font-size:11.5px}
+
+/* annotation flags */
+.anno{
+  display:none;font-family:var(--sans);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cyan-deep);font-weight:600;
+  border-left:2px solid var(--cyan);padding-left:8px;margin:0 0 10px;
+}
+body.annotated .anno{display:block}
+body.annotated section{outline:1px dashed rgba(62,147,164,.35);outline-offset:14px}
+
+/* ---------- page ---------- */
+section{padding:64px 0}
+section.tight{padding:44px 0}
+
+/* hero */
+.hero{background:var(--cyan);padding:0;position:relative;overflow:hidden}
+.hero .inner{padding:72px 0 64px;display:grid;grid-template-columns:1fr 230px;gap:48px;align-items:start}
+.hero h1{
+  font-family:var(--display);font-weight:600;color:#0E2E35;
+  font-size:clamp(34px,5.3vw,54px);line-height:1.06;letter-spacing:-.012em;margin:0 0 20px;
+}
+.hero .sub{font-size:20.5px;color:#123A42;margin:0 0 30px;max-width:34em}
+.eyebrow{
+  font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;color:#0E2E35;opacity:.72;margin:0 0 18px;
+}
+.actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;
+  padding:15px 26px;border:none;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;
+  background:var(--crimson);color:#fff;transition:transform .18s ease,background .18s ease;
+}
+.btn:hover{background:#d5102d;transform:translateY(-1px)}
+.btn-quiet{
+  background:transparent;color:#0E2E35;border-bottom:1.5px solid rgba(14,46,53,.4);
+  border-radius:0;padding:15px 2px;letter-spacing:.1em;
+}
+.btn-quiet:hover{background:transparent;border-bottom-color:#0E2E35}
+
+/* cover placeholder */
+.cover{
+  background:var(--cyan-deep);aspect-ratio:6/9;border-radius:2px;position:relative;overflow:hidden;
+  box-shadow:0 18px 40px rgba(9,44,52,.28);display:flex;flex-direction:column;justify-content:center;
+  padding:26px 20px;text-align:center;color:#fff;
+}
+.cover::after{
+  content:"";position:absolute;left:0;right:0;top:58%;height:26px;background:var(--crimson);
+  transform:rotate(-4deg) scale(1.15);
+}
+.cover .ct{font-family:var(--display);font-size:27px;line-height:1.05;letter-spacing:.01em}
+.cover .cs{font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:12px;opacity:.9}
+.cover .cn{font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;margin-top:auto;padding-top:34px}
+.cover-cap{font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#0E2E35;opacity:.6;margin-top:12px;text-align:center}
+
+/* spine */
+.spine{background:#0E2E35;color:#EAF4F5}
+.spine .lead{font-family:var(--display);font-size:clamp(24px,3.4vw,33px);line-height:1.22;margin:0 0 22px;color:#fff}
+.spine ul{list-style:none;margin:0;padding:0}
+.spine li{
+  font-family:var(--serif);font-style:italic;font-size:21px;color:var(--cyan);
+  padding-left:26px;border-left:1px solid rgba(109,194,209,.45);margin-bottom:10px;
+}
+
+/* body type */
+h2{
+  font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,34px);
+  line-height:1.16;letter-spacing:-.008em;margin:0 0 22px;color:var(--teal-ink);
+}
+h2.lede{font-size:clamp(28px,4vw,38px)}
+p{margin:0 0 20px}
+p.first{font-size:22px;color:var(--teal-ink)}
+
+/* pull quote */
+.pull{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:38px 0;margin:44px 0}
+.pull q{
+  font-family:var(--display);font-style:italic;font-size:clamp(23px,3.2vw,30px);
+  line-height:1.34;color:var(--teal-ink);display:block;quotes:'\201C' '\201D';
+}
+.pull cite{
+  display:block;margin-top:18px;font-family:var(--sans);font-style:normal;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+
+/* the path — signature element */
+.path{background:var(--paper-warm);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.rail{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:34px 0 0;border-top:1px solid var(--rule)}
+.leg{padding:0 26px 4px 0;position:relative}
+.ticks{display:flex;gap:5px;padding-top:18px}
+.tick{width:9px;height:9px;border-radius:50%;background:var(--cyan)}
+.leg:nth-child(2) .tick{background:var(--cyan-deep)}
+.leg:nth-child(3) .tick{background:var(--crimson)}
+.leg h3{
+  font-family:var(--display);font-size:23px;font-weight:600;margin:14px 0 8px;color:var(--teal-ink);
+}
+.leg .steps{font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.leg p{font-size:17.5px;color:#33403F;margin:0}
+
+/* endorsements */
+.quotes{display:grid;gap:34px}
+.q p{font-style:italic;font-size:19px;color:#2B3838;margin:0 0 12px}
+.q .who{font-family:var(--sans);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--cyan-deep);font-weight:600}
+
+/* gains list — hanging indent, no markers (collateral convention) */
+.gains{list-style:none;margin:26px 0 0;padding:0}
+.gains li{padding-left:34px;text-indent:-34px;margin-bottom:16px;font-size:19.5px}
+.label{
+  font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:600;color:var(--cyan-deep);margin:0 0 4px;
+}
+
+/* offer / capture */
+.offer{background:var(--cyan);color:#0E2E35}
+.offer h2{color:#0E2E35}
+.card{background:#fff;border-radius:3px;padding:34px;box-shadow:0 14px 34px rgba(9,44,52,.16);margin-top:32px}
+.field{margin-bottom:18px}
+.field label{
+  display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:600;color:var(--muted);margin-bottom:7px;
+}
+.field input,.field select{
+  width:100%;font-family:var(--serif);font-size:18px;padding:12px 14px;
+  border:1px solid var(--rule);border-radius:2px;background:#FCFDFD;color:var(--ink);
+}
+.field input:focus,.field select:focus{outline:2px solid var(--cyan-deep);outline-offset:1px;border-color:transparent}
+.consent{font-size:15.5px;color:var(--muted);margin:16px 0 0;line-height:1.5}
+.btn-full{width:100%;text-align:center}
+.success{background:#EDF7F8;border-left:3px solid var(--cyan-deep);padding:22px 24px;font-size:18.5px;color:var(--teal-ink)}
+
+/* stakes */
+.stakes{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.stakes>div{padding:30px 30px 30px 0}
+.stakes>div+div{padding-left:34px;border-left:1px solid var(--rule)}
+.stakes h3{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin:0 0 14px}
+.stakes .fail h3{color:var(--crimson)}
+.stakes .win h3{color:var(--cyan-deep)}
+.stakes p{font-size:18.5px;margin:0;color:#33403F}
+
+/* boards */
+.boards{background:#0E2E35;color:#DCEEF0}
+.boards h2{color:#fff}
+.boards p{color:#BCD9DD}
+
+/* details */
+.details{font-family:var(--sans);font-size:14px;color:var(--muted);letter-spacing:.01em}
+.details .t{font-family:var(--display);font-size:23px;color:var(--teal-ink);letter-spacing:0;margin-bottom:4px}
+.details .st{font-family:var(--serif);font-size:18px;color:#33403F;letter-spacing:0;margin-bottom:18px}
+.details table{border-collapse:collapse;margin-top:16px;width:100%;max-width:460px}
+.details td{padding:7px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+.details td:last-child{text-align:right;color:#33403F}
+
+footer{background:#0A2429;color:#8FB4BA;padding:46px 0;font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+footer a{color:var(--cyan)}
+
+.hidden{display:none !important}
+
+@media (max-width:760px){
+  body{font-size:18px}
+  .hero .inner{grid-template-columns:1fr;gap:34px;padding:52px 0 48px}
+  .hero .covercol{max-width:190px}
+  .rail{grid-template-columns:1fr}
+  .leg{padding:0 0 26px;border-top:1px solid var(--rule)}
+  .leg:first-child{border-top:none}
+  .stakes{grid-template-columns:1fr}
+  .stakes>div+div{padding-left:0;border-left:none;border-top:1px solid var(--rule)}
+  section{padding:48px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div id="chrome">
+  <span class="tag">Mockup</span>
+  <span class="note">robinfuller.coach/book &mdash; copy deck 2026-08-10_1213</span>
+  <button id="stateBtn" aria-pressed="false">State A &mdash; pre-launch</button>
+  <button id="annoBtn" aria-pressed="false">Show block IDs</button>
+  <span class="note">Copy is final-draft. Design is illustrative only &mdash; layout is iRapture&rsquo;s call.</span>
+</div>
+
+<!-- 1 · HEADER -->
+<section class="hero" id="top">
+  <div class="wide inner">
+    <div>
+      <p class="anno">Module 1 &mdash; W-1, W-2, M-9/M-10</p>
+      <p class="eyebrow">Robin Fuller</p>
+      <h1>The ministry you love should outlast your leadership.</h1>
+      <p class="sub">Finish Well is a practical guide to succession planning for executive directors and boards &mdash; twelve steps, written by a coach who spent four years handing off the ministry she had led for twenty-three.</p>
+      <div class="actions">
+        <a class="btn" href="#audit" data-state-a>Take the audit</a>
+        <a class="btn hidden" href="#order" data-state-b>Order the book</a>
+        <a class="btn btn-quiet hidden" href="#audit" data-state-b>Take the audit first</a>
+      </div>
+    </div>
+    <div class="covercol">
+      <div class="cover">
+        <div class="ct">Finish<br>Well</div>
+        <div class="cs">Succession Planning for the Ministry You Love</div>
+        <div class="cn">Robin Fuller</div>
+      </div>
+      <p class="cover-cap">Placeholder &mdash; final cover from Spencer Fuller</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · SPINE -->
+<section class="spine tight">
+  <div class="wrap">
+    <p class="anno">Module 2 &mdash; W-3 &middot; locked campaign line</p>
+    <p class="lead">Finish well means leaving the ministry ready.</p>
+    <ul>
+      <li>Ready for the people who will remain.</li>
+      <li>Ready for the leader who comes next.</li>
+      <li>Ready for the mission to continue.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3 · PROBLEM -->
+<section>
+  <div class="wrap">
+    <p class="anno">Module 3 &mdash; W-4, W-5</p>
+    <h2 class="lede">Every ministry leader leaves. Almost none of them plan for it.</h2>
+    <p class="first">You may be years from that day or closer than you have told anyone. Either way it is coming &mdash; the day someone else unlocks the doors, sits in your chair, and carries what you have carried. What the ministry looks like on that day is being decided now, by whether anyone is willing to have the conversation.</p>
+    <p>Most ministries put real thought into welcoming a new leader. Far fewer put any into bringing a season to a close. Succession is the thing everyone experiences and almost nobody talks about, and the silence is what costs the ministry &mdash; its momentum, its staff, sometimes its donors.</p>
+    <div class="pull">
+      <q>God cares about the ministry more than you ever could, and He sees the full picture.</q>
+      <cite>Robin Fuller, Finish Well</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · GUIDE -->
+<section class="tight">
+  <div class="wrap">
+    <p class="anno">Module 4 &mdash; W-6</p>
+    <h2>I have sat where you are sitting.</h2>
+    <p>I served in pregnancy center ministry for twenty-three years, sixteen and a half of them at one organization, and I did not know how to leave it. Coming back from a sabbatical, I could finally see what we had built: a ministry that ran on one person. The transition took four years of honest work with a board, a coach, and a God more patient than I was. It was not tidy. It was good.</p>
+    <p>Since then I have walked alongside other directors through their own transitions. Finish Well is not my story. It is the field guide I did not have.</p>
+    <p class="label" style="margin-top:26px">Robin Fuller, PCC</p>
+    <p style="font-size:17px;color:var(--muted);margin:0">Professional Certified Coach. She speaks, writes, teaches, and coaches, serving hundreds of ministry leaders each year.</p>
+  </div>
+</section>
+
+<!-- 5 · THE PATH -->
+<section class="path">
+  <div class="wide">
+    <p class="anno">Module 5 &mdash; W-7 &middot; signature element</p>
+    <h2>Twelve steps, three movements</h2>
+    <div class="rail">
+      <div class="leg">
+        <div class="ticks"><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i></div>
+        <h3>Prepare yourself</h3>
+        <p class="steps">Steps 1&ndash;5</p>
+        <p>Before a ministry can be ready, its leader has to be. Start the conversation, write down what you actually do, and discern honestly whether this is weariness or release.</p>
+      </div>
+      <div class="leg">
+        <div class="ticks"><i class="tick"></i><i class="tick"></i><i class="tick"></i><i class="tick"></i></div>
+        <h3>Prepare the ministry</h3>
+        <p class="steps">Steps 6&ndash;9</p>
+        <p>Strengthen the structure, the hiring, the team, and the board while you are still there to strengthen them.</p>
+      </div>
+      <div class="leg">
+        <div class="ticks"><i class="tick"></i><i class="tick"></i><i class="tick"></i></div>
+        <h3>Hand it off</h3>
+        <p class="steps">Steps 10&ndash;12</p>
+        <p>The handoff itself, what a board should look for in a candidate, a word for the one who comes next, and walking away well.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · ENDORSEMENTS -->
+<section>
+  <div class="wrap">
+    <p class="anno">Module 6 &mdash; W-8</p>
+    <div class="quotes">
+      <div class="q">
+        <p>&ldquo;A thoughtful, encouraging, and much-needed guide for leaders navigating the often complex journey of ministry transition. Whether you are preparing to step away or helping someone step in, this book will leave you feeling supported, equipped, and reminded that, with God&rsquo;s guidance, it is possible to finish well.&rdquo;</p>
+        <p class="who">Erin Forsythe, M.Div. &mdash; Care Net</p>
+      </div>
+      <div class="q">
+        <p>&ldquo;Every ED/CEO and any board officer should have Finish Well to lay a great foundation for a good transition of leadership. Succession isn&rsquo;t something you want to be foisted upon you.&rdquo;</p>
+        <p class="who">Jor-El Godsey, President &mdash; Heartbeat International</p>
+      </div>
+      <div class="q">
+        <p>&ldquo;This book will be invaluable to any organization, regardless of where they are in the succession planning stage. In my personal experience as an outgoing CEO, Robin walked with me through that transition over a period of four years and with her help, I did Finish Well.&rdquo;</p>
+        <p class="who">Doreen Jansson, CEO &mdash; Align Leadership</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · GAINS -->
+<section class="tight">
+  <div class="wrap">
+    <p class="anno">Module 7 &mdash; W-9</p>
+    <h2>What you will walk away with</h2>
+    <ul class="gains">
+      <li>Language for a conversation you have been avoiding, and a way to open it without alarming your board or your staff</li>
+      <li>A written record of what you actually do all day, so the ministry is not carrying it in one person&rsquo;s memory</li>
+      <li>Clarity about timing &mdash; the difference between being weary and being released</li>
+      <li>A board prepared to run a process instead of a scramble</li>
+      <li>Documents you can use this month: a staff survey, a project proposal form, and a sample succession plan</li>
+      <li>A plan for your own heart, for the Monday morning after the keys are gone</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8b · ORDER (State B) -->
+<section id="order" class="hidden tight" data-state-b>
+  <div class="wrap">
+    <p class="anno">Module 8b &mdash; W-11 &middot; State B only</p>
+    <h2>Finish Well is available now.</h2>
+    <p>Paperback, hardcover, and ebook. Order from your preferred retailer, or ask your local bookstore to order it &mdash; they can.</p>
+    <div class="actions" style="margin-top:26px">
+      <a class="btn" href="#order">Order the book</a>
+      <a class="btn btn-quiet" href="#audit">Take the audit first</a>
+    </div>
+    <p style="font-size:14px;color:var(--muted);margin-top:18px">Retailer links pending &mdash; supplied before October 1.</p>
+  </div>
+</section>
+
+<!-- 8a · AUDIT + CAPTURE -->
+<section class="offer" id="audit">
+  <div class="wrap">
+    <p class="anno">Module 8a &mdash; W-10, M-1 through M-8</p>
+    <h2>Where does your ministry stand right now?</h2>
+    <p style="font-size:21px;color:#123A42">The book comes out this fall. You do not have to wait to find out where you are.</p>
+    <p style="color:#123A42">Ten minutes, and you will know which parts of a transition your ministry is ready for, which parts would come apart under pressure, and exactly which chapter to open first when the book arrives. It is free. Tell us where to send it.</p>
+
+    <div class="card" id="formCard">
+      <p class="label" style="margin-bottom:20px">Send me the audit</p>
+      <div class="field">
+        <label for="fn">First name</label>
+        <input id="fn" type="text" placeholder="Robin">
+      </div>
+      <div class="field">
+        <label for="em">Email</label>
+        <input id="em" type="email" placeholder="you@yourministry.org">
+      </div>
+      <div class="field">
+        <label for="org">Organization (optional)</label>
+        <input id="org" type="text" placeholder="Where you serve">
+      </div>
+      <div class="field">
+        <label for="role">My role</label>
+        <select id="role">
+          <option>Executive Director or CEO</option>
+          <option>Board member</option>
+          <option>Staff</option>
+          <option>Coach or consultant</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <button class="btn btn-full" id="sendBtn">Send me the audit</button>
+      <p class="consent">We will send you the audit and occasional notes from Robin about leading and leaving well. Unsubscribe any time. We do not share your address.</p>
+    </div>
+
+    <div class="card success hidden" id="successCard">
+      It is on the way. Check your inbox in the next few minutes &mdash; and if it is not there, look in promotions or spam, then add Robin to your contacts so the next one arrives properly.
+    </div>
+  </div>
+</section>
+
+<!-- 9 · STAKES -->
+<section class="tight">
+  <div class="wrap">
+    <p class="anno">Module 9 &mdash; W-12</p>
+    <div class="stakes">
+      <div class="fail">
+        <h3>Left unplanned</h3>
+        <p>The board scrambles. The staff waits for news. The successor inherits questions nobody wrote down. And the leader who gave the ministry decades leaves it tired, and unfinished.</p>
+      </div>
+      <div class="win">
+        <h3>Planned well</h3>
+        <p>The people who remain are ready. The leader who comes next is set up to succeed. The mission keeps moving &mdash; which was always the point, and never was about any one of us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · BOARDS -->
+<section class="boards">
+  <div class="wrap">
+    <p class="anno">Module 10 &mdash; W-13 &middot; the buyer block</p>
+    <h2>Reading this as a board member?</h2>
+    <p>Succession is the board&rsquo;s responsibility before it is the leader&rsquo;s. Finish Well is written for both sides of that table &mdash; a practical guide for executive directors and boards. A board that reads it together before a search begins runs a process instead of a scramble.</p>
+    <p>If you would like copies for your board or staff team, or you are looking for a speaker on succession for your conference or network, get in touch.</p>
+    <div class="actions" style="margin-top:24px">
+      <a class="btn" href="mailto:coachrobinfuller@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · DETAILS -->
+<section class="tight">
+  <div class="wrap details">
+    <p class="anno">Module 11 &mdash; W-15</p>
+    <div class="t">Finish Well: Succession Planning for the Ministry You Love</div>
+    <div class="st">A Practical Guide for Executive Directors and Boards</div>
+    <div>Robin Fuller &middot; Skinny Brown Dog Media &middot; 164 pages &middot; 6 &times; 9 &middot; <span data-release-a>Releases October 1, 2026</span><span class="hidden" data-release-b>Released October 1, 2026</span></div>
+    <table>
+      <tr><td>Paperback &middot; 978-1-970642-06-3</td><td>$19.99</td></tr>
+      <tr><td>Hardcover, case laminate &middot; 978-1-970642-16-2</td><td>$24.99</td></tr>
+      <tr><td>Hardcover, jacketed &middot; 978-1-970642-17-9</td><td>$29.99</td></tr>
+      <tr><td>Ebook &middot; 978-1-970642-18-6</td><td>$9.99</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="anno">Module 12 &mdash; W-16</p>
+    <p style="margin:0 0 8px">Finish Well is published by Skinny Brown Dog Media.</p>
+    <p style="margin:0 0 8px">&copy; 2026 Robin Fuller. All rights reserved. &middot; <a href="mailto:coachrobinfuller@gmail.com">coachrobinfuller@gmail.com</a></p>
+    <p style="margin:14px 0 0"><a href="#audit">Take the audit</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var stateB = false, annotated = false;
+  var stateBtn = document.getElementById('stateBtn');
+  var annoBtn  = document.getElementById('annoBtn');
+
+  function applyState(){
+    document.querySelectorAll('[data-state-b]').forEach(function(el){
+      el.classList.toggle('hidden', !stateB);
+    });
+    document.querySelectorAll('[data-state-a]').forEach(function(el){
+      el.classList.toggle('hidden', stateB);
+    });
+    document.querySelectorAll('[data-release-a]').forEach(function(el){
+      el.classList.toggle('hidden', stateB);
+    });
+    document.querySelectorAll('[data-release-b]').forEach(function(el){
+      el.classList.toggle('hidden', !stateB);
+    });
+    // in State B the order block moves above the audit block
+    var audit = document.getElementById('audit');
+    var order = document.getElementById('order');
+    if(stateB){ order.parentNode.insertBefore(order, audit); }
+    stateBtn.textContent = stateB ? 'State B \u2014 launch' : 'State A \u2014 pre-launch';
+    stateBtn.setAttribute('aria-pressed', stateB ? 'true' : 'false');
+  }
+
+  stateBtn.addEventListener('click', function(){ stateB = !stateB; applyState(); });
+  annoBtn.addEventListener('click', function(){
+    annotated = !annotated;
+    document.body.classList.toggle('annotated', annotated);
+    annoBtn.setAttribute('aria-pressed', annotated ? 'true' : 'false');
+    annoBtn.textContent = annotated ? 'Hide block IDs' : 'Show block IDs';
+  });
+
+  document.getElementById('sendBtn').addEventListener('click', function(){
+    document.getElementById('formCard').classList.add('hidden');
+    document.getElementById('successCard').classList.remove('hidden');
+  });
+
+  applyState();
+})();
+</script>
+</body>
+</html>
