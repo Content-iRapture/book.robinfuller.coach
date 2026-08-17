@@ -39,7 +39,7 @@ section.tight{padding:44px 0}
 .hidden{display:none !important}
 
 /* ---------- state switch ----------
-   State A = pre-launch (audit only). State B = launch (order the book).
+   State A = pre-launch (quiz only). State B = launch (order the book).
 
    To switch this page: change data-state="a" to "b" on the <html> tag (line 2).
    index.state-b.html is this same page, already set to "b".
@@ -410,9 +410,9 @@ p.first{font-size:22px;color:var(--teal-ink)}
       <h1>The ministry you love should outlast your leadership.</h1>
       <p class="sub">Finish Well is a practical guide to succession planning for executive directors and boards &mdash; twelve steps, written by a coach who spent four years handing off the ministry she had led for twenty-three.</p>
       <div class="actions">
-        <a class="btn" href="#audit" data-state-a>Take the audit</a>
+        <a class="btn" href="#quiz" data-state-a>Take the free Succession Planning Quiz</a>
         <a class="btn" href="#order" data-state-b>Order the book</a>
-        <a class="btn btn-quiet" href="#audit" data-state-b>Take the audit first</a>
+        <a class="btn btn-quiet" href="#quiz" data-state-b>Take the free Succession Planning Quiz first</a>
       </div>
     </div>
     <div class="covercol">
@@ -535,14 +535,14 @@ p.first{font-size:22px;color:var(--teal-ink)}
     <p>Paperback, hardcover, and ebook. Order from your preferred retailer, or ask your local bookstore to order it &mdash; they can.</p>
     <div class="actions" style="margin-top:26px">
       <a class="btn" href="#order">Order the book</a>
-      <a class="btn btn-quiet" href="#audit">Take the audit first</a>
+      <a class="btn btn-quiet" href="#quiz">Take the Succession Planning Quiz first</a>
     </div>
     <p style="font-size:14px;color:var(--muted);margin-top:18px">Retailer links pending &mdash; supplied before October 1.</p>
   </div>
 </section>
 
-<!-- 8a · AUDIT + CAPTURE -->
-<section class="offer" id="audit">
+<!-- 8a · QUIZ + CAPTURE -->
+<section class="offer" id="quiz">
   <div class="wrap">
     <h2>Where does your ministry stand right now?</h2>
     <p style="font-size:21px;color:#123A42">The book comes out this fall. You do not have to wait to find out where you are.</p>
@@ -553,7 +553,7 @@ p.first{font-size:22px;color:var(--teal-ink)}
         <div class="card" id="formCard">
           <form action="https://coach.us19.list-manage.com/subscribe/post?u=35984f1049bc0754ccf9ed8c2&amp;id=2d1c25b572&amp;f_id=00365de7f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
             <div id="mc_embed_signup_scroll">
-              <p class="label" style="margin-bottom:20px">Send me the audit</p>
+              <p class="label" style="margin-bottom:20px">Send me the Succession Planning Quiz</p>
               <div class="mc-field-group field">
                 <label for="mce-FNAME">First name</label>
                 <input type="text" name="FNAME" class=" text" id="mce-FNAME" value="" placeholder="Robin" autocomplete="given-name">
@@ -582,8 +582,8 @@ p.first{font-size:22px;color:var(--teal-ink)}
               </div>
               <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_35984f1049bc0754ccf9ed8c2_2d1c25b572" tabindex="-1" value=""></div>
               <p class="form-msg" id="formMsg" role="alert"></p>
-              <div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-full button" value="Send me the audit"></div>
-              <p class="consent">We will send you the audit and occasional notes from Robin about leading and leaving well. Unsubscribe any time. We do not share your address.</p>
+              <div class="clear"><button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-full button">Send me the free Succession Planning Quiz</button></div>
+              <p class="consent">We will send you the Succession Planning Quiz and occasional notes from Robin about leading and leaving well. Unsubscribe any time. We do not share your address.</p>
             </div>
           </form>
         </div>
@@ -591,7 +591,9 @@ p.first{font-size:22px;color:var(--teal-ink)}
     </div>
 
     <div class="card success hidden" id="successCard">
-      It is on the way. Check your inbox in the next few minutes &mdash; and if it is not there, look in promotions or spam, then add Robin to your contacts so the next one arrives properly.
+      <p style="margin:0">The Succession Planning Quiz is on the way. Check your inbox in the next few minutes &mdash; and if it is not there, look in promotions or spam, then add Robin to your contacts so the next one arrives properly.</p>
+      <p style="margin:22px 0 0"><a class="btn" href="/Succession-Planning-Quiz.pdf" download>Download the free Succession Planning Quiz</a></p>
+      <p style="margin:16px 0 0">Download the file and open it in a PDF reader. It scores itself there.</p>
     </div>
   </div>
 </section>
@@ -670,7 +672,7 @@ p.first{font-size:22px;color:var(--teal-ink)}
   <div class="wide footer-pub">
     <p>Finish Well is published by Skinny Brown Dog Media.</p>
     <p>&copy; 2026 Robin Fuller. All rights reserved. &middot; <a href="mailto:coachrobinfuller@gmail.com">coachrobinfuller@gmail.com</a></p>
-    <p class="footer-pub-cta"><a href="#audit">Take the audit</a></p>
+    <p class="footer-pub-cta"><a href="#quiz">Take the Succession Planning Quiz</a></p>
   </div>
 </footer>
 
