@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cyan:#6DC2D1;
+  --cyan:#78A5BC;
   --cyan-deep:#3E93A4;
   --cyan-pale:#EDF7F8;
   --teal-ink:#12363E;
@@ -153,7 +153,7 @@ html[data-state="b"] [data-release-a]{display:none !important}
 .spine ul{list-style:none;margin:0;padding:0}
 .spine li{
   font-family:var(--serif);font-style:italic;font-size:21px;color:var(--cyan);
-  padding-left:26px;border-left:1px solid rgba(109,194,209,.45);margin-bottom:10px;
+  padding-left:26px;border-left:1px solid rgba(120,165,188,.45);margin-bottom:10px;
 }
 
 /* ---------- body type ---------- */
@@ -240,6 +240,9 @@ p.first{font-size:22px;color:var(--teal-ink)}
 
 /* ---------- details ---------- */
 .details{font-family:var(--sans);font-size:14px;color:var(--muted);letter-spacing:.01em}
+.buy-direct{margin-top:26px}
+.buy-direct h3{font-family:var(--display);font-size:23px;font-weight:600;margin:0 0 10px;color:var(--teal-ink)}
+.buy-direct p{margin:0}
 .details .t{font-family:var(--display);font-size:23px;color:var(--teal-ink);letter-spacing:0;margin-bottom:4px;line-height:1.2}
 .details .st{font-family:var(--serif);font-size:18px;color:#33403F;letter-spacing:0;margin-bottom:18px}
 .details table{border-collapse:collapse;margin-top:16px;width:100%;max-width:460px}
@@ -496,9 +499,17 @@ p.first{font-size:22px;color:var(--teal-ink)}
 <section id="order" class="tight" data-state-b>
   <div class="wrap">
     <h2>Finish Well is available now.</h2>
-    <p>Paperback, hardcover, and ebook. Order from your preferred retailer, or ask your local bookstore to order it &mdash; they can.</p>
+    <!-- "Buy it from Robin": final copy from Eric Reid (29 Sep 2026). Do not edit wording; wording questions go to Eric. -->
+    <div class="buy-direct">
+      <h3>Buy it from Robin</h3>
+      <p>When you order <em>Finish Well</em> here, you&rsquo;re buying directly from the author, and your purchase supports the work of helping ministries finish well. Because you&rsquo;re buying from me, I&rsquo;m able to offer it at a better price than the major retailers.</p>
+    </div>
     <div class="actions" style="margin-top:26px">
-      <a class="btn" href="#order">Order the book</a>
+      <!-- STRIPE: replace href with Robin's Stripe Payment Link before launch.
+           Product: Finish Well, Digital Cloth hardcover with dust jacket, ISBN 978-1-970642-17-9.
+           Price $23.99, shipping included (no shipping rate). Collect name, shipping address, email.
+           Order notifications to coachrobinfuller@gmail.com. -->
+      <a class="btn" href="https://buy.stripe.com/REPLACE_WITH_ROBIN_PAYMENT_LINK" id="orderFromRobin">Order from Robin</a>
       <a class="btn btn-quiet" href="#quiz">Take the Succession Planning Quiz first</a>
     </div>
   </div>
