@@ -41,11 +41,12 @@ section.tight{padding:44px 0}
 /* ---------- state switch ----------
    State A = pre-launch (quiz only). State B = launch (order the book).
 
-   To switch this page: change data-state="a" to "b" on the <html> tag (line 2).
-   index.state-b.html is this same page, already set to "b".
-
-   After editing index.html, regenerate the other file with:
-     sed '2s/data-state="a"/data-state="b"/' index.html > index.state-b.html
+   Each file now carries ONLY its own state's content (the other state's
+   blocks are deleted, not merely hidden), so the page reads correctly
+   even where CSS is not applied (reader view, previews, text extracts).
+   index.html = State A (live until launch). index.state-b.html = State B.
+   To launch: copy index.state-b.html over index.html. The two files are
+   no longer interchangeable by sed; edit each directly.
 ------------------------------------ */
 html[data-state="a"] [data-state-b],
 html[data-state="b"] [data-state-a],
@@ -375,8 +376,6 @@ p.first{font-size:22px;color:var(--teal-ink)}
       <p class="sub">Finish Well is a practical guide to succession planning for executive directors and boards &mdash; twelve steps, written by a coach who spent four years handing off the ministry she had led for twenty-three.</p>
       <div class="actions">
         <a class="btn" href="#quiz" data-state-a>Take the free Succession Planning Quiz</a>
-        <a class="btn" href="#order" data-state-b>Order the book</a>
-        <a class="btn btn-quiet" href="#quiz" data-state-b>Take the free Succession Planning Quiz first</a>
       </div>
     </div>
     <div class="covercol">
@@ -492,19 +491,6 @@ p.first{font-size:22px;color:var(--teal-ink)}
   </div>
 </section>
 
-<!-- 8b · ORDER (State B only) -->
-<section id="order" class="tight" data-state-b>
-  <div class="wrap">
-    <h2>Finish Well is available now.</h2>
-    <p>Paperback, hardcover, and ebook. Order from your preferred retailer, or ask your local bookstore to order it &mdash; they can.</p>
-    <div class="actions" style="margin-top:26px">
-      <a class="btn" href="#order">Order the book</a>
-      <a class="btn btn-quiet" href="#quiz">Take the Succession Planning Quiz first</a>
-    </div>
-    <p style="font-size:14px;color:var(--muted);margin-top:18px">Retailer links pending &mdash; supplied before October 1.</p>
-  </div>
-</section>
-
 <!-- 8a · QUIZ + CAPTURE -->
 <section class="offer" id="quiz">
   <div class="wrap">
@@ -596,7 +582,7 @@ p.first{font-size:22px;color:var(--teal-ink)}
   <div class="wrap details">
     <div class="t">Finish Well: Succession Planning for the Ministry You Love</div>
     <div class="st">A Practical Guide for Executive Directors and Boards</div>
-    <div>Robin Fuller &middot; Skinny Brown Dog Media &middot; 164 pages &middot; 6 &times; 9 &middot; <span data-release-a>Releases October 1, 2026</span><span data-release-b>Released October 1, 2026</span></div>
+    <div>Robin Fuller &middot; Skinny Brown Dog Media &middot; 164 pages &middot; 6 &times; 9 &middot; Releases October 1, 2026</div>
     <table>
       <tr><td>Paperback &middot; 978-1-970642-19-3</td><td>$19.99</td></tr>
       <tr><td>Hardcover, case laminate &middot; 978-1-970642-16-2</td><td>$24.99</td></tr>
