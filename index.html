@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-state="b">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <script>/* Redirect ".../page.html/" to ".../page.html" (GitHub Pages has no server-side redirects). */
@@ -39,21 +39,6 @@ img{max-width:100%;height:auto}
 section{padding:64px 0;scroll-margin-top:24px}
 section.tight{padding:44px 0}
 .hidden{display:none !important}
-
-/* ---------- state switch ----------
-   State A = pre-launch (quiz only). State B = launch (order the book).
-
-   Each file now carries ONLY its own state's content (the other state's
-   blocks are deleted, not merely hidden), so the page reads correctly
-   even where CSS is not applied (reader view, previews, text extracts).
-   index.html = State A (live until launch). index.state-b.html = State B.
-   To launch: copy index.state-b.html over index.html. The two files are
-   no longer interchangeable by sed; edit each directly.
------------------------------------- */
-html[data-state="a"] [data-state-b],
-html[data-state="b"] [data-state-a],
-html[data-state="a"] [data-release-b],
-html[data-state="b"] [data-release-a]{display:none !important}
 
 /* ---------- site header ---------- */
 .site-header{
@@ -255,6 +240,8 @@ p.first{font-size:22px;color:var(--teal-ink)}
 .details .st{font-family:var(--serif);font-size:18px;color:#33403F;letter-spacing:0;margin-bottom:18px}
 .details table{border-collapse:collapse;margin-top:16px;width:100%;max-width:460px}
 .details td{padding:7px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+.details th{padding:7px 0;border-bottom:1px solid var(--rule);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-align:right;color:var(--muted);white-space:nowrap}
+.details thead td{border-bottom:1px solid var(--rule)}
 .details td:last-child{text-align:right;color:#33403F;white-space:nowrap;padding-left:12px}
 
 /* ---------- site footer ---------- */
@@ -502,10 +489,11 @@ p.first{font-size:22px;color:var(--teal-ink)}
   </div>
 </section>
 
-<!-- 8b · ORDER (State B only) -->
-<section id="order" class="tight" data-state-b>
+<!-- 8b · ORDER -->
+<section id="order" class="tight">
   <div class="wrap">
     <h2>Finish Well is available now.</h2>
+    <p>Available now in paperback and hardcover. The ebook is coming soon.</p>
     <!-- "Buy it from Robin": final copy from Eric Reid (29 Sep 2026). Do not edit wording; wording questions go to Eric. -->
     <div class="buy-direct">
       <h3>Buy it from Robin</h3>
@@ -620,9 +608,10 @@ p.first{font-size:22px;color:var(--teal-ink)}
     <div class="st">A Practical Guide for Executive Directors and Boards</div>
     <div>Robin Fuller &middot; Skinny Brown Dog Media &middot; 164 pages &middot; 6 &times; 9 &middot; Released October 1, 2026</div>
     <table>
+      <thead><tr><td></td><th scope="col">List price</th></tr></thead>
       <tr><td>Paperback &middot; 978-1-970642-19-3</td><td>$19.99</td></tr>
       <tr><td>Hardcover, no dust jacket &middot; 978-1-970642-16-2</td><td>$24.99</td></tr>
-      <tr><td>Hardcover with custom dust jacket &middot; 978-1-970642-17-9</td><td>List $29.99</td></tr>
+      <tr><td>Hardcover with custom dust jacket &middot; 978-1-970642-17-9</td><td>$29.99</td></tr>
     </table>
   </div>
 </section>
