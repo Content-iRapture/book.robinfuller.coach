@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" data-state="b">
+<html lang="en" data-state="a">
 <head>
 <meta charset="utf-8">
-<script>/* Redirect ".../page.html/" to ".../page.html" (GitHub Pages has no server-side redirects). */
-(function(l){if(/\.html\/+$/.test(l.pathname)){l.replace(l.pathname.replace(/\/+$/,'')+l.search+l.hash);}})(window.location);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Finish Well | Succession Planning for Ministry Leaders</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cyan:#78A5BC;
+  --cyan:#6DC2D1;
   --cyan-deep:#3E93A4;
   --cyan-pale:#EDF7F8;
   --teal-ink:#12363E;
@@ -156,7 +154,7 @@ html[data-state="b"] [data-release-a]{display:none !important}
 .spine ul{list-style:none;margin:0;padding:0}
 .spine li{
   font-family:var(--serif);font-style:italic;font-size:21px;color:var(--cyan);
-  padding-left:26px;border-left:1px solid rgba(120,165,188,.45);margin-bottom:10px;
+  padding-left:26px;border-left:1px solid rgba(109,194,209,.45);margin-bottom:10px;
 }
 
 /* ---------- body type ---------- */
@@ -243,14 +241,6 @@ p.first{font-size:22px;color:var(--teal-ink)}
 
 /* ---------- details ---------- */
 .details{font-family:var(--sans);font-size:14px;color:var(--muted);letter-spacing:.01em}
-.buy-direct{margin-top:26px}
-.buy-direct h3{font-family:var(--display);font-size:23px;font-weight:600;margin:0 0 10px;color:var(--teal-ink)}
-.buy-direct p{margin:0}
-.product-line{margin-top:26px;padding:16px 0 0;border-top:1px solid var(--rule)}
-.product-line p{margin:0}
-.product-line .pl-name{font-family:var(--display);font-size:20px;font-weight:600;color:var(--teal-ink)}
-.product-line .pl-price{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--teal-ink);margin-top:4px}
-.product-line .pl-note{font-size:17px;font-style:italic;color:var(--muted);margin-top:4px}
 .details .t{font-family:var(--display);font-size:23px;color:var(--teal-ink);letter-spacing:0;margin-bottom:4px;line-height:1.2}
 .details .st{font-family:var(--serif);font-size:18px;color:#33403F;letter-spacing:0;margin-bottom:18px}
 .details table{border-collapse:collapse;margin-top:16px;width:100%;max-width:460px}
@@ -385,8 +375,7 @@ p.first{font-size:22px;color:var(--teal-ink)}
       <h1>The ministry you love should outlast your leadership.</h1>
       <p class="sub">Finish Well is a practical guide to succession planning for executive directors and boards &mdash; twelve steps, written by a coach who spent four years handing off the ministry she had led for twenty-three.</p>
       <div class="actions">
-        <a class="btn" href="#order">Order the book</a>
-        <a class="btn btn-quiet" href="#quiz">Take the free Succession Planning Quiz</a>
+        <a class="btn" href="#quiz" data-state-a>Take the free Succession Planning Quiz</a>
       </div>
     </div>
     <div class="covercol">
@@ -502,37 +491,12 @@ p.first{font-size:22px;color:var(--teal-ink)}
   </div>
 </section>
 
-<!-- 8b · ORDER (State B only) -->
-<section id="order" class="tight" data-state-b>
-  <div class="wrap">
-    <h2>Finish Well is available now.</h2>
-    <!-- "Buy it from Robin": final copy from Eric Reid (29 Sep 2026). Do not edit wording; wording questions go to Eric. -->
-    <div class="buy-direct">
-      <h3>Buy it from Robin</h3>
-      <p>When you order <em>Finish Well</em> here, you&rsquo;re buying directly from the author, and your purchase supports the work of helping ministries finish well. Because you&rsquo;re buying from me, I&rsquo;m able to offer it at a better price than the major retailers.</p>
-    </div>
-    <!-- Product line: final copy from Eric Reid (30 Sep 2026). Do not edit wording. -->
-    <div class="product-line">
-      <p class="pl-name"><em>Finish Well</em> &middot; Hardcover with dust jacket</p>
-      <p class="pl-price">$23.99 &middot; Shipping included</p>
-      <p class="pl-note">The dust-jacket edition is available only here.</p>
-    </div>
-    <div class="actions" style="margin-top:18px">
-      <!-- STRIPE: Robin's live Payment Link (connected 30 Sep 2026).
-           Product: Finish Well, Digital Cloth hardcover with dust jacket, ISBN 978-1-970642-17-9.
-           Price $23.99, shipping included (no shipping rate). Collect name, shipping address, email.
-           Order notifications to coachrobinfuller@gmail.com. -->
-      <a class="btn" href="https://buy.stripe.com/3cI7sM6H39aWdIw8uDeUU02" id="orderFromRobin">Order from Robin</a>
-    </div>
-  </div>
-</section>
-
 <!-- 8a · QUIZ + CAPTURE -->
 <section class="offer" id="quiz">
   <div class="wrap">
     <h2>Where does your ministry stand right now?</h2>
-    <p style="font-size:21px;color:#123A42">Before you open the book, find out where you are.</p>
-    <p style="color:#123A42">Twenty minutes, and you will know which parts of a transition your ministry is ready for, which parts would come apart under pressure, and exactly which chapter to open first. It is free. Tell us where to send it.</p>
+    <p style="font-size:21px;color:#123A42">The book comes out this fall. You do not have to wait to find out where you are.</p>
+    <p style="color:#123A42">Twenty minutes, and you will know which parts of a transition your ministry is ready for, which parts would come apart under pressure, and exactly which chapter to open first when the book arrives. It is free. Tell us where to send it.</p>
 
     <div id="mc_embed_shell">
       <div id="mc_embed_signup">
@@ -618,11 +582,12 @@ p.first{font-size:22px;color:var(--teal-ink)}
   <div class="wrap details">
     <div class="t">Finish Well: Succession Planning for the Ministry You Love</div>
     <div class="st">A Practical Guide for Executive Directors and Boards</div>
-    <div>Robin Fuller &middot; Skinny Brown Dog Media &middot; 164 pages &middot; 6 &times; 9 &middot; Released October 1, 2026</div>
+    <div>Robin Fuller &middot; Skinny Brown Dog Media &middot; 164 pages &middot; 6 &times; 9 &middot; Releases October 1, 2026</div>
     <table>
       <tr><td>Paperback &middot; 978-1-970642-19-3</td><td>$19.99</td></tr>
-      <tr><td>Hardcover, no dust jacket &middot; 978-1-970642-16-2</td><td>$24.99</td></tr>
-      <tr><td>Hardcover with custom dust jacket &middot; 978-1-970642-17-9</td><td>List $29.99</td></tr>
+      <tr><td>Hardcover, case laminate &middot; 978-1-970642-16-2</td><td>$24.99</td></tr>
+      <tr><td>Hardcover, jacketed &middot; 978-1-970642-17-9</td><td>$29.99</td></tr>
+      <tr><td>Ebook &middot; 978-1-970642-18-6</td><td>$9.99</td></tr>
     </table>
   </div>
 </section>
