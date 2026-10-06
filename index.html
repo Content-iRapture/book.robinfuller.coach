@@ -236,6 +236,9 @@ p.first{font-size:22px;color:var(--teal-ink)}
 .product-line .pl-name{font-family:var(--display);font-size:20px;font-weight:600;color:var(--teal-ink)}
 .product-line .pl-price{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--teal-ink);margin-top:4px}
 .product-line .pl-note{font-size:17px;font-style:italic;color:var(--muted);margin-top:4px}
+.retailers-note{font-size:16px;line-height:1.5;color:var(--muted);margin:14px 0 0}
+.retailers-note a{color:var(--cyan-deep);text-decoration:underline;text-underline-offset:2px}
+.retailers-note a:hover,.retailers-note a:focus-visible{color:var(--teal-ink)}
 .details .t{font-family:var(--display);font-size:23px;color:var(--teal-ink);letter-spacing:0;margin-bottom:4px;line-height:1.2}
 .details .st{font-family:var(--serif);font-size:18px;color:#33403F;letter-spacing:0;margin-bottom:18px}
 .details table{border-collapse:collapse;margin-top:16px;width:100%;max-width:460px}
@@ -502,16 +505,18 @@ p.first{font-size:22px;color:var(--teal-ink)}
     <!-- Product line: final copy from Eric Reid (30 Sep 2026). Do not edit wording. -->
     <div class="product-line">
       <p class="pl-name"><em>Finish Well</em> &middot; Hardcover with dust jacket</p>
-      <p class="pl-price">$23.99 &middot; Shipping included</p>
+      <p class="pl-price">$23.99 &middot; Price includes shipping and sales tax.</p>
       <p class="pl-note">The dust-jacket edition is available only here.</p>
     </div>
     <div class="actions" style="margin-top:18px">
       <!-- STRIPE: Robin's live Payment Link (connected 30 Sep 2026).
            Product: Finish Well, Digital Cloth hardcover with dust jacket, ISBN 978-1-970642-17-9.
-           Price $23.99, shipping included (no shipping rate). Collect name, shipping address, email.
+           Price $23.99, shipping and sales tax included (no shipping rate). Collect name, shipping address, email.
            Order notifications to coachrobinfuller@gmail.com. -->
       <a class="btn" href="https://buy.stripe.com/3cI7sM6H39aWdIw8uDeUU02" id="orderFromRobin">Order from Robin</a>
     </div>
+    <!-- Other retailers line: final copy from Eric Reid (6 Oct 2026). Do not edit wording. -->
+    <p class="retailers-note">The hardcover with dust jacket is available only here. <a href="https://geni.us/ReLiCz" target="_blank" rel="noopener">Prefer another bookstore? Find the paperback and hardcover without the dust jacket at Amazon and other retailers.</a></p>
   </div>
 </section>
 
