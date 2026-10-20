@@ -554,8 +554,8 @@ p.first{font-size:22px;color:var(--teal-ink)}
                 <label for="mce-EMAIL">Email</label>
                 <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" value="" required placeholder="you@yourministry.org" autocomplete="email">
               </div>
-              <!-- ORGTYPE and ROLE: same merge tags and values as the robinfuller.coach home-page form,
-                   so Robin's pregnancy-center segments work the same for book signups. -->
+              <!-- ORGTYPE: same choices as the robinfuller.coach home-page form, so Robin can
+                   tag pregnancy-center leaders. Requires an ORGTYPE field in the book audience. -->
               <fieldset class="mc-field-group field-radios" id="mce-ORGTYPE">
                 <legend>Organization type</legend>
                 <label class="opt"><input type="radio" name="ORGTYPE" id="mce-ORGTYPE0" value="Pregnancy Center" required> Pregnancy Center</label>
@@ -566,12 +566,17 @@ p.first{font-size:22px;color:var(--teal-ink)}
                 <label for="mce-ORG">Organization (optional)</label>
                 <input type="text" name="ORG" class=" text" id="mce-ORG" value="" placeholder="Where you serve" autocomplete="organization">
               </div>
-              <fieldset class="mc-field-group field-radios" id="mce-ROLE">
-                <legend>What is your role?</legend>
-                <label class="opt"><input type="radio" name="ROLE" id="mce-ROLE0" value="CEO / Executive Director" required> CEO / Executive Director</label>
-                <label class="opt"><input type="radio" name="ROLE" id="mce-ROLE1" value="Management"> Management</label>
-                <label class="opt"><input type="radio" name="ROLE" id="mce-ROLE2" value="Professional"> Professional</label>
-              </fieldset>
+              <div class="mc-field-group field">
+                <label for="mce-ROLE">My role</label>
+                <select name="ROLE" class=" text" id="mce-ROLE" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Executive Director or CEO</option>
+                  <option>Board member</option>
+                  <option>Staff</option>
+                  <option>Coach or consultant</option>
+                  <option>Something else</option>
+                </select>
+              </div>
               <div id="mce-responses" class="clear">
                 <div class="response" id="mce-error-response" style="display:none"></div>
                 <div class="response" id="mce-success-response" style="display:none"></div>
@@ -709,13 +714,17 @@ p.first{font-size:22px;color:var(--teal-ink)}
         return;
       }
 
-      var groups = [['ORGTYPE','Please choose your organization type.'],['ROLE','Please choose your role.']];
-      for(var g=0; g<groups.length; g++){
-        if(!form.querySelector('input[name="' + groups[g][0] + '"]:checked')){
-          showMsg(groups[g][1]);
-          form.querySelector('input[name="' + groups[g][0] + '"]').focus();
-          return;
-        }
+      if(!form.querySelector('input[name="ORGTYPE"]:checked')){
+        showMsg('Please choose your organization type.');
+        document.getElementById('mce-ORGTYPE0').focus();
+        return;
+      }
+
+      var role = document.getElementById('mce-ROLE');
+      if(role && !role.value){
+        showMsg('Please choose your role.');
+        role.focus();
+        return;
       }
 
       var cb = 'mcjsonp_' + (++seq);
