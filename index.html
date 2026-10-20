@@ -202,19 +202,6 @@ p.first{font-size:22px;color:var(--teal-ink)}
   border:1px solid var(--rule);border-radius:2px;background:#FCFDFD;color:var(--ink);
 }
 .field input:focus,.field select:focus{outline:2px solid var(--cyan-deep);outline-offset:1px;border-color:transparent}
-.field-radios{border:0;margin:0 0 18px;padding:0;min-width:0}
-.field-radios legend{
-  display:block;padding:0;font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  font-weight:600;color:var(--muted);margin-bottom:9px;
-}
-.field-radios .opt{
-  display:flex;align-items:center;gap:12px;margin:0 0 6px;cursor:pointer;
-  font-family:var(--serif);font-size:18px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--ink);
-}
-.field-radios .opt input{
-  width:18px;height:18px;margin:0;padding:0;flex:none;accent-color:var(--cyan-deep);cursor:pointer;
-}
-.field-radios .opt input:focus-visible{outline:2px solid var(--cyan-deep);outline-offset:2px}
 .consent{font-size:15.5px;color:var(--muted);margin:16px 0 0;line-height:1.5}
 .btn-full{width:100%;text-align:center}
 .form-msg{
@@ -556,12 +543,15 @@ p.first{font-size:22px;color:var(--teal-ink)}
               </div>
               <!-- ORGTYPE: same choices as the robinfuller.coach home-page form, so Robin can
                    tag pregnancy-center leaders. Requires an ORGTYPE field in the book audience. -->
-              <fieldset class="mc-field-group field-radios" id="mce-ORGTYPE">
-                <legend>Organization type</legend>
-                <label class="opt"><input type="radio" name="ORGTYPE" id="mce-ORGTYPE0" value="Pregnancy Center" required> Pregnancy Center</label>
-                <label class="opt"><input type="radio" name="ORGTYPE" id="mce-ORGTYPE1" value="Other Ministry"> Other Ministry</label>
-                <label class="opt"><input type="radio" name="ORGTYPE" id="mce-ORGTYPE2" value="Other Business"> Other Business or None</label>
-              </fieldset>
+              <div class="mc-field-group field">
+                <label for="mce-ORGTYPE">Organization type</label>
+                <select name="ORGTYPE" class=" text" id="mce-ORGTYPE" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option value="Pregnancy Center">Pregnancy Center</option>
+                  <option value="Other Ministry">Other Ministry</option>
+                  <option value="Other Business">Other Business or None</option>
+                </select>
+              </div>
               <div class="mc-field-group field">
                 <label for="mce-ORG">Organization (optional)</label>
                 <input type="text" name="ORG" class=" text" id="mce-ORG" value="" placeholder="Where you serve" autocomplete="organization">
@@ -714,9 +704,10 @@ p.first{font-size:22px;color:var(--teal-ink)}
         return;
       }
 
-      if(!form.querySelector('input[name="ORGTYPE"]:checked')){
+      var orgType = document.getElementById('mce-ORGTYPE');
+      if(orgType && !orgType.value){
         showMsg('Please choose your organization type.');
-        document.getElementById('mce-ORGTYPE0').focus();
+        orgType.focus();
         return;
       }
 
