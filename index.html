@@ -237,21 +237,18 @@ p.first{font-size:22px;color:var(--teal-ink)}
 .product-line .pl-name{font-family:var(--display);font-size:20px;font-weight:600;color:var(--teal-ink)}
 .product-line .pl-price{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--teal-ink);margin-top:4px}
 .product-line .pl-note{font-size:17px;font-style:italic;color:var(--muted);margin-top:4px}
-.editions{margin-top:26px;padding:16px 0 0;border-top:1px solid var(--rule)}
-.ed-legend{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--muted);margin:0 0 12px}
-.ed-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.ed{position:relative;display:flex;flex-direction:column;gap:4px;padding:16px 40px 14px 16px;background:var(--paper-warm);border:1px solid var(--rule);cursor:pointer;transition:border-color .15s,box-shadow .15s,background .15s}
+.editions{margin-top:26px;padding:18px 0 0;border-top:1px solid var(--rule)}
+.ed-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ed{position:relative;display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--paper-warm);border:1px solid var(--rule);cursor:pointer;transition:border-color .15s,box-shadow .15s,background .15s}
 .ed:hover{border-color:var(--cyan)}
 .ed input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .ed.is-selected{border-color:var(--cyan-deep);box-shadow:inset 0 0 0 1px var(--cyan-deep);background:var(--cyan-pale)}
 .ed.is-focus{outline:2px solid var(--teal-ink);outline-offset:2px}
-.ed-dot{position:absolute;top:16px;right:14px;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--muted);background:#fff}
+.ed-dot{flex:0 0 auto;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--muted);background:#fff}
 .ed.is-selected .ed-dot{border-color:var(--cyan-deep);box-shadow:inset 0 0 0 4px #fff;background:var(--cyan-deep)}
-.ed-name{font-family:var(--display);font-size:18px;font-weight:600;line-height:1.25;color:var(--teal-ink)}
-.ed-price{font-family:var(--sans);font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--teal-ink);line-height:1.45}
-.ed-amt.is-tbd{color:var(--crimson);border-bottom:1px dashed var(--crimson)}
-.ed-note{font-size:16px;font-style:italic;color:var(--muted);line-height:1.4}
-.ed-isbn{font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:6px}
+.ed-label{font-family:var(--sans);font-size:14.5px;font-weight:600;letter-spacing:.01em;line-height:1.35;color:var(--teal-ink)}
+.ed-fine{margin:12px 0 0;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--teal-ink)}
+.ed-fine.ed-note{margin-top:2px;font-family:var(--serif);font-size:17px;font-weight:400;font-style:italic;letter-spacing:0;color:var(--muted)}
 .btn.is-disabled{background:#9AA7A9;pointer-events:none;cursor:default;transition:none}
 @media (max-width:860px){.ed-grid{grid-template-columns:1fr}}
 .retailers-note{font-size:16px;line-height:1.5;color:var(--muted);margin:14px 0 0}
@@ -520,36 +517,31 @@ p.first{font-size:22px;color:var(--teal-ink)}
       <h3>Buy it from Robin</h3>
       <p>When you order <em>Finish Well</em> here, you&rsquo;re buying directly from the author, and your purchase supports the work of helping ministries finish well. Because you&rsquo;re buying from me, I&rsquo;m able to offer it at a better price than the major retailers.</p>
     </div>
-    <!-- 8c · EDITION SELECTOR (branch three-editions, for Nov 10 release; hold unpublished until Eric approves).
-         Edition data (price, Stripe Payment Link) lives in the EDITIONS block in the script at the bottom of the page.
-         Dust-jacket wording below is Eric's final copy (30 Sep 2026); do not edit.
-         PLACEHOLDERS: paperback + plain hardcover prices and Payment Links are not set yet. -->
+    <!-- 8c · EDITION SELECTOR (branch three-editions, release Tue Nov 10; hold unpublished until Eric approves).
+         Spec: Eric Reid, Oct 14 email. Edition labels are Eric's wording, word for word; do not edit.
+         Codes per Eric Oct 28: HEARTBEAT10, CARENET10, SUMMIT10 (10%, all editions, multiple copies).
+         Price/shipping lines below are the existing approved copy (30 Sep 2026), unchanged.
+         Stripe Payment Links per edition live in the EDITIONS block in the script at the bottom of the page. -->
     <div class="editions" id="editions">
-      <p class="ed-legend" id="edLegend">Choose your edition</p>
-      <div class="ed-grid" role="radiogroup" aria-labelledby="edLegend">
-        <label class="ed" data-edition="paperback">
-          <input type="radio" name="edition" value="paperback">
+      <div class="ed-grid" role="radiogroup" aria-label="Edition">
+        <label class="ed" data-edition="dustjacket">
+          <input type="radio" name="edition" value="dustjacket" checked>
           <span class="ed-dot" aria-hidden="true"></span>
-          <span class="ed-name"><em>Finish Well</em> &middot; Paperback</span>
-          <span class="ed-price"><span class="ed-amt" data-price-for="paperback"></span> &middot; Price includes shipping and sales tax.</span>
-          <span class="ed-isbn">ISBN 978-1-970642-19-3</span>
+          <span class="ed-label">Hardcover with dust jacket, $23.99</span>
         </label>
         <label class="ed" data-edition="hardcover">
           <input type="radio" name="edition" value="hardcover">
           <span class="ed-dot" aria-hidden="true"></span>
-          <span class="ed-name"><em>Finish Well</em> &middot; Hardcover</span>
-          <span class="ed-price"><span class="ed-amt" data-price-for="hardcover"></span> &middot; Price includes shipping and sales tax.</span>
-          <span class="ed-isbn">ISBN 978-1-970642-16-2</span>
+          <span class="ed-label">Hardcover, $22</span>
         </label>
-        <label class="ed" data-edition="dustjacket">
-          <input type="radio" name="edition" value="dustjacket" checked>
+        <label class="ed" data-edition="paperback">
+          <input type="radio" name="edition" value="paperback">
           <span class="ed-dot" aria-hidden="true"></span>
-          <span class="ed-name"><em>Finish Well</em> &middot; Hardcover with dust jacket</span>
-          <span class="ed-price"><span class="ed-amt" data-price-for="dustjacket"></span> &middot; Price includes shipping and sales tax.</span>
-          <span class="ed-note">The dust-jacket edition is available only here.</span>
-          <span class="ed-isbn">ISBN 978-1-970642-17-9</span>
+          <span class="ed-label">Paperback, $17</span>
         </label>
       </div>
+      <p class="ed-fine">Price includes shipping and sales tax.</p>
+      <p class="ed-fine ed-note">The dust-jacket edition is available only here.</p>
     </div>
     <div class="actions" style="margin-top:18px">
       <!-- STRIPE: href is set by the edition selector script. Default = Robin's live dust-jacket Payment Link (connected 30 Sep 2026).
@@ -720,12 +712,12 @@ p.first{font-size:22px;color:var(--teal-ink)}
     });
   }
   /* ---- Edition selector (Nov 10 release) ----
-     Fill in price + link for each edition. An edition with link:'' shows a red placeholder price
-     and a disabled button, so nothing half-configured can be bought. */
+     Fill in the Stripe Payment Link for each edition. An edition with link:'' disables the
+     button, so nothing half-configured can be bought. */
   var EDITIONS = {
-    paperback:  { price: '',       link: '' },  /* TODO: Robin's direct price + Stripe Payment Link */
-    hardcover:  { price: '',       link: '' },  /* TODO: Robin's direct price + Stripe Payment Link */
-    dustjacket: { price: '$23.99', link: 'https://buy.stripe.com/3cI7sM6H39aWdIw8uDeUU02' }
+    dustjacket: { link: 'https://buy.stripe.com/3cI7sM6H39aWdIw8uDeUU02' },  /* existing, $23.99 */
+    hardcover:  { link: '' },  /* TODO: Stripe Payment Link, Hardcover $22.00, ISBN 978-1-970642-16-2 */
+    paperback:  { link: '' }   /* TODO: Stripe Payment Link, Paperback $17.00, ISBN 978-1-970642-19-3 */
   };
   /* Carry utm_* tags from this page's URL onto the Stripe link so the purchase keeps its source. */
   var utm = (function(){
@@ -753,12 +745,6 @@ p.first{font-size:22px;color:var(--teal-ink)}
     }
     orderBtn.setAttribute('data-umami-event-edition', key);
   }
-  Object.keys(EDITIONS).forEach(function(k){
-    var el = document.querySelector('[data-price-for="'+k+'"]');
-    if(!el) return;
-    if(EDITIONS[k].price){ el.textContent = EDITIONS[k].price; }
-    else { el.textContent = 'Price TBD'; el.classList.add('is-tbd'); }
-  });
   for(var c=0;c<edCards.length;c++){
     (function(card){
       var input = card.querySelector('input');
