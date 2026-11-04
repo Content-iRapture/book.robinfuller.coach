@@ -237,6 +237,23 @@ p.first{font-size:22px;color:var(--teal-ink)}
 .product-line .pl-name{font-family:var(--display);font-size:20px;font-weight:600;color:var(--teal-ink)}
 .product-line .pl-price{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--teal-ink);margin-top:4px}
 .product-line .pl-note{font-size:17px;font-style:italic;color:var(--muted);margin-top:4px}
+.editions{margin-top:26px;padding:16px 0 0;border-top:1px solid var(--rule)}
+.ed-legend{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--muted);margin:0 0 12px}
+.ed-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ed{position:relative;display:flex;flex-direction:column;gap:4px;padding:16px 40px 14px 16px;background:var(--paper-warm);border:1px solid var(--rule);cursor:pointer;transition:border-color .15s,box-shadow .15s,background .15s}
+.ed:hover{border-color:var(--cyan)}
+.ed input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ed.is-selected{border-color:var(--cyan-deep);box-shadow:inset 0 0 0 1px var(--cyan-deep);background:var(--cyan-pale)}
+.ed.is-focus{outline:2px solid var(--teal-ink);outline-offset:2px}
+.ed-dot{position:absolute;top:16px;right:14px;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--muted);background:#fff}
+.ed.is-selected .ed-dot{border-color:var(--cyan-deep);box-shadow:inset 0 0 0 4px #fff;background:var(--cyan-deep)}
+.ed-name{font-family:var(--display);font-size:18px;font-weight:600;line-height:1.25;color:var(--teal-ink)}
+.ed-price{font-family:var(--sans);font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--teal-ink);line-height:1.45}
+.ed-amt.is-tbd{color:var(--crimson);border-bottom:1px dashed var(--crimson)}
+.ed-note{font-size:16px;font-style:italic;color:var(--muted);line-height:1.4}
+.ed-isbn{font-family:var(--sans);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:6px}
+.btn.is-disabled{background:#9AA7A9;pointer-events:none;cursor:default;transition:none}
+@media (max-width:860px){.ed-grid{grid-template-columns:1fr}}
 .retailers-note{font-size:16px;line-height:1.5;color:var(--muted);margin:14px 0 0}
 .retailers-note a{color:var(--cyan-deep);text-decoration:underline;text-underline-offset:2px}
 .retailers-note a:hover,.retailers-note a:focus-visible{color:var(--teal-ink)}
@@ -503,18 +520,42 @@ p.first{font-size:22px;color:var(--teal-ink)}
       <h3>Buy it from Robin</h3>
       <p>When you order <em>Finish Well</em> here, you&rsquo;re buying directly from the author, and your purchase supports the work of helping ministries finish well. Because you&rsquo;re buying from me, I&rsquo;m able to offer it at a better price than the major retailers.</p>
     </div>
-    <!-- Product line: final copy from Eric Reid (30 Sep 2026). Do not edit wording. -->
-    <div class="product-line">
-      <p class="pl-name"><em>Finish Well</em> &middot; Hardcover with dust jacket</p>
-      <p class="pl-price">$23.99 &middot; Price includes shipping and sales tax.</p>
-      <p class="pl-note">The dust-jacket edition is available only here.</p>
+    <!-- 8c · EDITION SELECTOR (branch three-editions, for Nov 10 release; hold unpublished until Eric approves).
+         Edition data (price, Stripe Payment Link) lives in the EDITIONS block in the script at the bottom of the page.
+         Dust-jacket wording below is Eric's final copy (30 Sep 2026); do not edit.
+         PLACEHOLDERS: paperback + plain hardcover prices and Payment Links are not set yet. -->
+    <div class="editions" id="editions">
+      <p class="ed-legend" id="edLegend">Choose your edition</p>
+      <div class="ed-grid" role="radiogroup" aria-labelledby="edLegend">
+        <label class="ed" data-edition="paperback">
+          <input type="radio" name="edition" value="paperback">
+          <span class="ed-dot" aria-hidden="true"></span>
+          <span class="ed-name"><em>Finish Well</em> &middot; Paperback</span>
+          <span class="ed-price"><span class="ed-amt" data-price-for="paperback"></span> &middot; Price includes shipping and sales tax.</span>
+          <span class="ed-isbn">ISBN 978-1-970642-19-3</span>
+        </label>
+        <label class="ed" data-edition="hardcover">
+          <input type="radio" name="edition" value="hardcover">
+          <span class="ed-dot" aria-hidden="true"></span>
+          <span class="ed-name"><em>Finish Well</em> &middot; Hardcover</span>
+          <span class="ed-price"><span class="ed-amt" data-price-for="hardcover"></span> &middot; Price includes shipping and sales tax.</span>
+          <span class="ed-isbn">ISBN 978-1-970642-16-2</span>
+        </label>
+        <label class="ed" data-edition="dustjacket">
+          <input type="radio" name="edition" value="dustjacket" checked>
+          <span class="ed-dot" aria-hidden="true"></span>
+          <span class="ed-name"><em>Finish Well</em> &middot; Hardcover with dust jacket</span>
+          <span class="ed-price"><span class="ed-amt" data-price-for="dustjacket"></span> &middot; Price includes shipping and sales tax.</span>
+          <span class="ed-note">The dust-jacket edition is available only here.</span>
+          <span class="ed-isbn">ISBN 978-1-970642-17-9</span>
+        </label>
+      </div>
     </div>
     <div class="actions" style="margin-top:18px">
-      <!-- STRIPE: Robin's live Payment Link (connected 30 Sep 2026).
-           Product: Finish Well, Digital Cloth hardcover with dust jacket, ISBN 978-1-970642-17-9.
-           Price $23.99, shipping and sales tax included (no shipping rate). Collect name, shipping address, email.
-           Order notifications to coachrobinfuller@gmail.com. -->
-      <a class="btn" href="https://buy.stripe.com/3cI7sM6H39aWdIw8uDeUU02" id="orderFromRobin">Order from Robin</a>
+      <!-- STRIPE: href is set by the edition selector script. Default = Robin's live dust-jacket Payment Link (connected 30 Sep 2026).
+           Each Payment Link must have "Allow promotion codes" and "Let customers adjust quantity" turned on
+           so HEARTBEAT10 / CARENET10 / SUMMIT10 and multiple copies work. -->
+      <a class="btn" href="https://buy.stripe.com/3cI7sM6H39aWdIw8uDeUU02" id="orderFromRobin" data-umami-event="order-click" data-umami-event-edition="dustjacket">Order from Robin</a>
     </div>
     <!-- Other retailers line: final copy from Eric Reid (6 Oct 2026). Do not edit wording. -->
     <p class="retailers-note">The hardcover with dust jacket is available only here. <a href="https://geni.us/ReLiCz" target="_blank" rel="noopener">Prefer another bookstore? Find the paperback and hardcover without the dust jacket at Amazon and other retailers.</a></p>
@@ -678,6 +719,57 @@ p.first{font-size:22px;color:var(--teal-ink)}
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
+  /* ---- Edition selector (Nov 10 release) ----
+     Fill in price + link for each edition. An edition with link:'' shows a red placeholder price
+     and a disabled button, so nothing half-configured can be bought. */
+  var EDITIONS = {
+    paperback:  { price: '',       link: '' },  /* TODO: Robin's direct price + Stripe Payment Link */
+    hardcover:  { price: '',       link: '' },  /* TODO: Robin's direct price + Stripe Payment Link */
+    dustjacket: { price: '$23.99', link: 'https://buy.stripe.com/3cI7sM6H39aWdIw8uDeUU02' }
+  };
+  /* Carry utm_* tags from this page's URL onto the Stripe link so the purchase keeps its source. */
+  var utm = (function(){
+    var out = [], q = new URLSearchParams(window.location.search);
+    q.forEach(function(v,k){ if(/^utm_(source|medium|campaign|term|content)$/.test(k)) out.push(encodeURIComponent(k)+'='+encodeURIComponent(v)); });
+    return out.join('&');
+  })();
+  var orderBtn = document.getElementById('orderFromRobin');
+  var edCards = document.querySelectorAll('.ed');
+  function applyEdition(key){
+    var ed = EDITIONS[key]; if(!ed || !orderBtn) return;
+    for(var i=0;i<edCards.length;i++){
+      edCards[i].classList.toggle('is-selected', edCards[i].getAttribute('data-edition')===key);
+    }
+    if(ed.link){
+      orderBtn.href = ed.link + (utm ? (ed.link.indexOf('?')<0?'?':'&') + utm : '');
+      orderBtn.classList.remove('is-disabled');
+      orderBtn.removeAttribute('aria-disabled');
+      orderBtn.textContent = 'Order from Robin';
+    } else {
+      orderBtn.removeAttribute('href');
+      orderBtn.classList.add('is-disabled');
+      orderBtn.setAttribute('aria-disabled','true');
+      orderBtn.textContent = 'Checkout link not set';
+    }
+    orderBtn.setAttribute('data-umami-event-edition', key);
+  }
+  Object.keys(EDITIONS).forEach(function(k){
+    var el = document.querySelector('[data-price-for="'+k+'"]');
+    if(!el) return;
+    if(EDITIONS[k].price){ el.textContent = EDITIONS[k].price; }
+    else { el.textContent = 'Price TBD'; el.classList.add('is-tbd'); }
+  });
+  for(var c=0;c<edCards.length;c++){
+    (function(card){
+      var input = card.querySelector('input');
+      input.addEventListener('change', function(){ if(input.checked) applyEdition(input.value); });
+      input.addEventListener('focus', function(){ var fv=false; try{ fv=input.matches(':focus-visible'); }catch(e){} if(fv) card.classList.add('is-focus'); });
+      input.addEventListener('blur',  function(){ card.classList.remove('is-focus'); });
+    })(edCards[c]);
+  }
+  var checked = document.querySelector('.ed input:checked');
+  if(checked) applyEdition(checked.value);
+
   /* ---- Mailchimp signup, posted via JSONP so the visitor stays on the page ---- */
   var form    = document.getElementById('mc-embedded-subscribe-form');
   var msg     = document.getElementById('formMsg');
